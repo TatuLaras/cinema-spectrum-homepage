@@ -1,17 +1,17 @@
 import { CSSProperties, useEffect, useRef, useState } from 'react';
 import FeatureElement from '../../../components/FeatureElement';
 
-import '../styles/tv_desktop_feature.scss';
+import '../styles/split_feature.scss';
 import { Coords } from '../../../types';
-import {
-    motion,
-    useMotionValue,
-    useSpring, useVelocity
-} from 'framer-motion';
+import { motion, useMotionValue, useSpring, useVelocity } from 'framer-motion';
 
-type Props = {};
+type Props = {
+    title: string;
+    img1: string;
+    img2: string;
+};
 
-export default function TVDesktopFeature({}: Props) {
+export default function SplitFeature({ title, img1, img2 }: Props) {
     const [wipe, setWipe] = useState<Coords>({ x: 0, y: 0 });
     const wipeX = useMotionValue(0);
     const wipeXSpeed = useVelocity(wipeX);
@@ -41,8 +41,8 @@ export default function TVDesktopFeature({}: Props) {
 
     return (
         <FeatureElement
-            title='Works well on both the TV and as a desktop app'
-            className='tv-desktop-feature'
+            title={title}
+            className='split-feature'
         >
             <motion.div
                 className='split-image'

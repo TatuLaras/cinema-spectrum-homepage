@@ -2,10 +2,12 @@ import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import getVariants from '../variants';
 import { stages } from '../../../content';
 import { parallax } from '../../../utils';
+import SplitFeature from './SplitFeature';
+import UnknownFeature from './UnknownFeature';
 
 import '../styles/info.scss';
-import TVDesktopFeature from './TVDesktopFeature';
-import UnknownFeature from './UnknownFeature';
+import screenshot1 from '../../../assets/screenshots/screenshot1.png';
+import screenshot2 from '../../../assets/screenshots/screenshot2.png';
 
 type Props = {};
 
@@ -48,7 +50,16 @@ export default function Info({}: Props) {
                     The <span className='hl'>Media Center</span> You've Been
                     Looking For
                 </motion.h2>
-                <TVDesktopFeature />
+                <SplitFeature
+                    title='Your local streaming service'
+                    img1={screenshot1}
+                    img2={screenshot2}
+                />
+                <SplitFeature
+                    title='Works well on both the TV and as a desktop app'
+                    img1={screenshot1}
+                    img2={screenshot2}
+                />
                 <UnknownFeature />
             </motion.div>
         </motion.div>
