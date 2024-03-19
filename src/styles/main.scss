@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+    --hue: 272;
+    --color-main: hsl(var(--hue), 80%, 50%);
+    --color-main-hl: hsl(var(--hue), 80%, 55%);
+    --color-main-hl-1: hsl(var(--hue), 80%, 60%);
+    --color-bg-dark: hsl(var(--hue), 15%, 5%);
+    --color-bg-main: hsl(var(--hue), 20%, 8%);
+    --color-bg-main-hl: hsl(var(--hue), 20%, 18%);
+    --color-bg-main-hl-1: hsl(var(--hue), 20%, 25%);
+    --color-bg-secondary: hsl(var(--hue), 40%, 18%);
+    --color-bg-secondary-hl: hsl(var(--hue), 40%, 28%);
+    --color-text: white;
+    --color-text-disabled: hsl(var(--hue), 20%, 60%);
+
+    --color-accent-1: #19e3d5;
+    --color-accent-2: #d8e319;
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', Times, serif;
+}
+
+body {
+    color: white;
+    background-color: black;
+    height: 600vh;
+}
+
+h1 .hl,
+h2 .hl {
+    position: relative;
+    background: linear-gradient(270deg, white, #00ffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

@@ -1,0 +1,57 @@
+.tv-desktop-feature {
+    margin-top: 34rem;
+    
+    .content {
+        .split-image {
+            aspect-ratio: 1920 / 1048;
+            width: 100%;
+            align-self: center;
+            position: relative;
+            --offset: calc((var(--wipe-y) - 50%) * 0.08);
+            --clip-path-top: calc(
+                var(--wipe-x) + 4% + var(--extra-tilt) * 1% + var(--offset)
+            );
+            --clip-path-bottom: calc(
+                var(--wipe-x) - 4% - var(--extra-tilt) * 1% + var(--offset)
+            );
+
+            .img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-size: cover;
+            }
+
+            .shadow {
+                filter: blur(20px);
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+
+            .img-1 {
+                background-image: url('../../../assets/screenshots/screenshot2.png');
+                bottom: 1px;
+            }
+            .img-2 {
+                background-image: url('../../../assets/screenshots/screenshot1.png');
+                clip-path: polygon(
+                    100% 0,
+                    var(--clip-path-top) 0,
+                    var(--clip-path-bottom) 100%,
+                    100% 100%
+                );
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .tv-desktop-feature .content {
+        padding: 1rem !important;
+    }
+}

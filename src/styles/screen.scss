@@ -1,0 +1,109 @@
+.screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+
+    .noise-layer {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0.55;
+        background: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        mix-blend-mode: darken;
+        pointer-events: none;
+    }
+
+    .bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        filter: brightness(100%) contrast(1500%);
+        z-index: 2;
+    }
+
+    .bottom-layer {
+        position: absolute;
+        z-index: 0;
+        --leeway: -1000px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: var(--leeway);
+        background-color: black;
+        background-image: url('../assets/grid.png');
+        background-size: 256px;
+    }
+
+    .blob {
+        position: absolute;
+        background: radial-gradient(ellipse at top left, #b5f8fd, transparent),
+            radial-gradient(
+                closest-side,
+                #181c89 77%,
+                blue 82%,
+                green 87%,
+                yellow 90%,
+                red 93%,
+                black 100%
+            );
+        border-radius: 50%;
+
+        width: 25rem;
+        height: 25rem;
+        filter: blur(13px);
+
+        &.small {
+            width: 18rem;
+            height: 18rem;
+            filter: blur(9px);
+        }
+
+        &.blob-1 {
+            z-index: 1;
+        }
+
+        &.blob-2 {
+            z-index: 3;
+        }
+
+        &.blob-3 {
+            z-index: 2;
+        }
+    }
+
+    h1 {
+        margin: 0;
+        position: relative;
+        z-index: 5;
+        font-family: 'Playfair Display', Georgia, 'Times New Roman', Times,
+            serif;
+        font-weight: 900;
+        font-size: 9rem;
+        margin-top: 8rem;
+        margin-left: 18rem;
+        mix-blend-mode: difference;
+    }
+
+    @media (max-width: 970px) {
+        h1 {
+            font-size: 13vw;
+        }
+    }
+    @media (max-width: 1250px) {
+        h1 {
+            margin-left: 0;
+            align-self: center;
+        }
+    }
+}

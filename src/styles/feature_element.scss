@@ -1,0 +1,88 @@
+.feature-element {
+    --base-color: #ffffff15;
+    --hl-color: #ffffff71;
+    --border-radius: 0.5rem;
+    position: relative;
+    max-width: 70rem;
+    margin: 2rem;
+    margin-top: 20rem;
+    align-self: stretch;
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--base-color);
+    border-bottom-width: 0;
+    border-radius: var(--border-radius);
+    padding: var(--border-radius);
+    background: radial-gradient(
+        circle at top left,
+        var(--base-color),
+        transparent
+    );
+
+    &::after {
+        content: '';
+        display: block;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            var(--hl-color),
+            transparent
+        );
+        position: absolute;
+        left: var(--border-radius);
+        right: var(--border-radius);
+        bottom: 0;
+        height: 1px;
+        opacity: 0;
+        transition: opacity 0.3s ease-out;
+    }
+
+    &:hover::after {
+        opacity: 1;
+    }
+
+    &::before {
+        content: '';
+        display: block;
+        background-color: var(--base-color);
+        position: absolute;
+        left: var(--border-radius);
+        right: var(--border-radius);
+        bottom: 0;
+        height: 1px;
+    }
+
+    .title {
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin: 0.3rem 1rem;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        padding: 3rem;
+    }
+
+    .img, img {
+        border-radius: 0.25rem;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .feature-element {
+        --base-color: #252525ab;
+        --hl-color: #ffffff7e;
+        border: none;
+        &::before {
+            background-color: #00000000;
+        }
+    }
+}
+
+
+@media screen and (max-width: 770px) {
+    .feature-element {
+        margin: 1rem;
+        margin-top: 6rem;
+    }
+}
