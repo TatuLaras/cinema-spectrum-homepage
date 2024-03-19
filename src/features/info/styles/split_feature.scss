@@ -34,11 +34,11 @@
             }
 
             .img-1 {
-                background-image: url('../../../assets/screenshots/screenshot2.png');
+                background-image: var(--img-src-1);
                 bottom: 1px;
             }
             .img-2 {
-                background-image: url('../../../assets/screenshots/screenshot1.png');
+                background-image: var(--img-src-2);
                 clip-path: polygon(
                     100% 0,
                     var(--clip-path-top) 0,

@@ -51,6 +51,8 @@ export default function SplitFeature({ title, img1, img2 }: Props) {
                     {
                         '--wipe-x': `${wipe.x * 100}%`,
                         '--wipe-y': `${wipe.y * 100}%`,
+                        '--img-src-1': `url('${img1}')`,
+                        '--img-src-2': `url('${img2}')`,
                         '--extra-tilt': wipeXSpeedSpring,
                     } as CSSProperties
                 }

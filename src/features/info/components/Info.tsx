@@ -52,8 +52,8 @@ export default function Info({}: Props) {
                 </motion.h2>
                 <SplitFeature
                     title='Your local streaming service'
-                    img1={screenshot1}
-                    img2={screenshot2}
+                    img1={screenshot2}
+                    img2={screenshot1}
                 />
                 <SplitFeature
                     title='Works well on both the TV and as a desktop app'
