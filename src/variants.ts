@@ -11,6 +11,9 @@ const variants: Map<OnScreenObject, Variants> = new Map([
             info1: {
                 opacity: 0,
             },
+            download: {
+                opacity: 0,
+            },
         },
     ],
     [
@@ -41,6 +44,9 @@ const variants: Map<OnScreenObject, Variants> = new Map([
                     duration: 1,
                 },
             },
+            download: {
+                opacity: 0,
+            },
         },
     ],
     [
@@ -68,17 +74,28 @@ const variants: Map<OnScreenObject, Variants> = new Map([
             info1: {
                 opacity: 0,
             },
+            download: {
+                scale: 7,
+                rotateZ: 90,
+                y: 1300,
+                x: 500,
+                transition: {
+                    duration: 0,
+                    ease: 'linear',
+                },
+            },
         },
     ],
-    ['mainTitle', {
-        initial: {
+    [
+        'mainTitle',
+        {
+            initial: {},
+            transitionFromInitial: {},
+            info1: {
+                opacity: 0,
+            },
         },
-        transitionFromInitial: {
-        },
-        info1: {
-            opacity: 0,
-        },
-    }],
+    ],
 ]);
 
 export default function getVariants(obj: OnScreenObject) {

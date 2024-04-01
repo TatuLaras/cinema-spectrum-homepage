@@ -3,6 +3,7 @@ import './styles/screen.scss';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import getVariants from './variants';
 import Info from './features/info/components/Info';
+import Download from './features/download/components/Download';
 import { stages } from './content';
 import { parallax } from './utils';
 
@@ -50,18 +51,18 @@ export default function App({}: Props) {
 
     return (
         <motion.div
-            className='screen'
-            role='banner'
+            className="screen"
+            role="banner"
             animate={getCurrentVariant()}
         >
-            <div className='noise-layer'></div>
-            <motion.div className='bg'>
+            <div className="noise-layer"></div>
+            <motion.div className="bg">
                 <motion.div
-                    className='bottom-layer'
+                    className="bottom-layer"
                     style={{ y: bgPosition }}
                 ></motion.div>
                 <motion.div
-                    className='blob blob-1'
+                    className="blob blob-1"
                     style={{
                         x: 155,
                         y: blob1Position,
@@ -69,18 +70,18 @@ export default function App({}: Props) {
                     variants={getVariants('blob1')}
                 ></motion.div>
                 <motion.div
-                    className='blob blob-2'
+                    className="blob blob-2"
                     variants={getVariants('blob2')}
                     style={{ scale: blob2Scale, top: blob2Position }}
                 ></motion.div>
                 <motion.div
-                    className='blob small blob-3'
+                    className="blob small blob-3"
                     variants={getVariants('blob3')}
                     style={{ top: blob3Position, left: 80 }}
                 ></motion.div>
             </motion.div>
             <motion.h1
-                className='main-title'
+                className="main-title"
                 variants={getVariants('mainTitle')}
                 style={{ y: titlePosition }}
             >
@@ -89,6 +90,7 @@ export default function App({}: Props) {
                 SPECTRUM
             </motion.h1>
             <Info />
+            <Download />
         </motion.div>
     );
 }

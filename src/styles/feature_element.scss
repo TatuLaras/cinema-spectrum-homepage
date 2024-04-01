@@ -1,22 +1,18 @@
 .feature-element {
-    --base-color: #ffffff15;
+    --base-color: rgba(0, 0, 0, 0.35);
     --hl-color: #ffffff71;
-    --border-radius: 0.5rem;
+    --border-radius: 0.25rem;
     position: relative;
-    max-width: 70rem;
+    max-width: 65rem;
     margin: 2rem;
     margin-top: 20rem;
     align-self: stretch;
     backdrop-filter: blur(5px);
-    border: 1px solid var(--base-color);
+    box-shadow: 0 0 5px var(--base-color);
     border-bottom-width: 0;
     border-radius: var(--border-radius);
     padding: var(--border-radius);
-    background: radial-gradient(
-        circle at top left,
-        var(--base-color),
-        transparent
-    );
+    background-color: var(--base-color);
 
     &::after {
         content: '';
@@ -40,17 +36,6 @@
         opacity: 1;
     }
 
-    &::before {
-        content: '';
-        display: block;
-        background-color: var(--base-color);
-        position: absolute;
-        left: var(--border-radius);
-        right: var(--border-radius);
-        bottom: 0;
-        height: 1px;
-    }
-
     .title {
         font-size: 1.6rem;
         font-weight: 600;
@@ -63,7 +48,8 @@
         padding: 3rem;
     }
 
-    .img, img {
+    .img,
+    img {
         border-radius: 0.25rem;
     }
 }
@@ -79,10 +65,10 @@
     }
 }
 
-
 @media screen and (max-width: 770px) {
     .feature-element {
         margin: 1rem;
         margin-top: 6rem;
     }
 }
+

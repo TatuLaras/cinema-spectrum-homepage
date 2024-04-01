@@ -16,6 +16,10 @@ export const stages: Stage[] = [
         startsAt: 2000,
         variant: 'info1',
     },
+    {
+        startsAt: 6500,
+        variant: 'download',
+    },
 ];
 
 export const scrollParallaxLayers: number[] = [0.1, 0.08, 0.06, 0.04, 0.01];
