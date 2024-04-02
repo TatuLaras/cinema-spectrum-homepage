@@ -26,7 +26,6 @@ function Info() {
     const h2Position = useTransform(() => h2Offset.get() + (progress.get() - base.get()) * layer1.get());
     const blobPosition = useTransform(() => (progress.get() - base.get()) * layer2.get());
     const bgPosition = useTransform(() =>  (progress.get() - base.get()) * layer3.get());
-    console.log("Info rerender");
 
     return (
         <motion.div
