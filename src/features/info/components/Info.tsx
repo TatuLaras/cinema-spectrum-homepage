@@ -1,6 +1,5 @@
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
 import getVariants from '../variants';
-import { parallax } from '../../../utils';
 import SplitFeature from './SplitFeature';
 import UnknownFeature from './UnknownFeature';
 

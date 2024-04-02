@@ -94,6 +94,9 @@ const variants: Map<OnScreenObject, Variants> = new Map([
             info1: {
                 opacity: 0,
             },
+            download: {
+                opacity: 0,
+            },
         },
     ],
 ]);
