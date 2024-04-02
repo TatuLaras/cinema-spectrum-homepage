@@ -1,6 +1,5 @@
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
 import getVariants from '../variants';
-import { stages } from '../../../content';
 import { parallax } from '../../../utils';
 import SplitFeature from './SplitFeature';
 import UnknownFeature from './UnknownFeature';
@@ -8,21 +7,26 @@ import UnknownFeature from './UnknownFeature';
 import '../styles/info.scss';
 import screenshot1 from '../../../assets/screenshots/screenshot1.png';
 import screenshot2 from '../../../assets/screenshots/screenshot2.png';
+import { memo } from 'react';
 
-type Props = {};
 
-export default function Info({}: Props) {
+function Info() {
     const { scrollY } = useScroll();
     const progress = useSpring(scrollY, {
         stiffness: 100,
         damping: 30,
         restDelta: 0.001,
     });
-    const base = stages.find((val) => val.variant == 'info1')?.startsAt ?? 2000;
 
-    const h2Position = useTransform(() => 200 + (progress.get() - base) * -0.9);
-    const blobPosition = useTransform(() => parallax(progress.get() - base, 1));
-    const bgPosition = useTransform(() => parallax(progress.get() - base, 4));
+    const h2Offset = useMotionValue(200);
+    const base = useMotionValue(2000);
+    const layer1 = useMotionValue(-0.9);
+    const layer2 = useMotionValue(-0.08);
+    const layer3 = useMotionValue(-0.01);
+    const h2Position = useTransform(() => h2Offset.get() + (progress.get() - base.get()) * layer1.get());
+    const blobPosition = useTransform(() => (progress.get() - base.get()) * layer2.get());
+    const bgPosition = useTransform(() =>  (progress.get() - base.get()) * layer3.get());
+    console.log("Info rerender");
 
     return (
         <motion.div
@@ -65,3 +69,5 @@ export default function Info({}: Props) {
         </motion.div>
     );
 }
+
+export default memo(Info);

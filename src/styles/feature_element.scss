@@ -1,12 +1,12 @@
 .panel {
-    --base-color: rgba(0, 0, 0, 0.35);
+    --base-color: rgba(0, 0, 0, 0.4);
     --hl-color: #ffffff71;
     --border-radius: 0.25rem;
 
     border-radius: var(--border-radius);
     padding: var(--border-radius);
     background-color: var(--base-color);
-    backdrop-filter: blur(5px);
+    // backdrop-filter: blur(1px);
     box-shadow: 0 0 5px var(--base-color);
     border-bottom-width: 0;
 
