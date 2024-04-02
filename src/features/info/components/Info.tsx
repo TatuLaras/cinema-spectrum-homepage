@@ -46,7 +46,7 @@ export default function Info({}: Props) {
             </div>
 
             <motion.div className='content' style={{ y: h2Position }}>
-                <motion.h2 variants={getVariants('h2')}>
+                <motion.h2 className='panel' variants={getVariants('h2')}>
                     The <span className='hl'>Media Center</span> You've Been
                     Looking For
                 </motion.h2>
