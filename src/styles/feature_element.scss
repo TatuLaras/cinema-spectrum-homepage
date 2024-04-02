@@ -62,5 +62,8 @@
     .feature-element {
         margin: 1rem;
         margin-top: 6rem;
+        .content {
+            padding: 1rem;
+        }
     }
 }
