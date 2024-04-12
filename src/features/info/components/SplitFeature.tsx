@@ -40,12 +40,9 @@ export default function SplitFeature({ title, img1, img2 }: Props) {
     }
 
     return (
-        <FeatureElement
-            title={title}
-            className='split-feature'
-        >
+        <FeatureElement title={title} className="split-feature">
             <motion.div
-                className='split-image'
+                className="split-image"
                 ref={splitImgRef}
                 style={
                     {
@@ -57,12 +54,12 @@ export default function SplitFeature({ title, img1, img2 }: Props) {
                     } as CSSProperties
                 }
             >
-                <div className='shadow'>
-                    <div className='img img-1'></div>
-                    <div className='img img-2'></div>
+                <div className="shadow">
+                    <div className="img img-1"></div>
+                    <div className="img img-2"></div>
                 </div>
-                <div className='img img-1'></div>
-                <div className='img img-2'></div>
+                <div className="img img-1"></div>
+                <div className="img img-2"></div>
             </motion.div>
         </FeatureElement>
     );
