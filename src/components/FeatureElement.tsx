@@ -1,10 +1,13 @@
-import { motion } from 'framer-motion';
+// import { MutableRefObject, useEffect, useRef, useState } from 'react';
+import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import '../styles/feature_element.scss';
+import { inView } from '../utils/inView';
 
 type Props = {
     children: JSX.Element;
     title?: string | null;
     className?: string;
+    ref?: MutableRefObject<HTMLDivElement | null>;
 };
 
 export default function FeatureElement({
@@ -12,18 +15,27 @@ export default function FeatureElement({
     title = null,
     className = '',
 }: Props) {
+    const [featureInView, setFeatureInView] = useState(false);
+    const featureRef = useRef<HTMLHeadingElement | null>(null);
+
+    useEffect(() => {
+        window.addEventListener('scroll', onScroll);
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+        };
+    }, []);
+
+    function onScroll() {
+        setFeatureInView(inView(featureRef.current!, 50, 'visible'));
+    }
+
     return (
-        <motion.div
-            className={`panel feature-element ${className}`}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{
-                duration: 1,
-            }}
+        <div
+            className={`panel feature-element ${className} ${featureInView ? 'in-view' : ''}`}
+            ref={featureRef}
         >
-            <div className='title'>{title}</div>
-            <div className='content'>{children}</div>
-        </motion.div>
+            <div className="title">{title}</div>
+            <div className="content">{children}</div>
+        </div>
     );
 }

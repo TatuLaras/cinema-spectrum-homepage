@@ -1,9 +1,32 @@
+@keyframes blobSpin {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+@keyframes blobBop {
+    from {
+        top: 4rem;
+        left: 30rem;
+        transform: rotateZ(45deg);
+    }
+    to {
+        top: 24rem;
+        left: 30rem;
+        transform: rotateZ(0deg);
+    }
+}
 .screen {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    height: calc(100vh + 15rem);
+    margin: 0;
+    padding: 0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -29,7 +52,7 @@
         right: 0;
         bottom: 0;
         filter: brightness(100%) contrast(1500%);
-        z-index: 2;
+        z-index: 4;
     }
 
     .bottom-layer {
@@ -43,43 +66,6 @@
         background-color: black;
         background-image: url('../assets/grid.png');
         background-size: 256px;
-    }
-
-    .blob {
-        position: absolute;
-        background: radial-gradient(ellipse at top left, #b5f8fd, transparent),
-            radial-gradient(
-                closest-side,
-                #181c89 77%,
-                blue 82%,
-                green 87%,
-                yellow 90%,
-                red 93%,
-                black 100%
-            );
-        border-radius: 50%;
-
-        width: 25rem;
-        height: 25rem;
-        filter: blur(13px);
-
-        &.small {
-            width: 18rem;
-            height: 18rem;
-            filter: blur(9px);
-        }
-
-        &.blob-1 {
-            z-index: 1;
-        }
-
-        &.blob-2 {
-            z-index: 3;
-        }
-
-        &.blob-3 {
-            z-index: 2;
-        }
     }
 
     h1 {
@@ -105,5 +91,48 @@
             margin-left: 0;
             align-self: center;
         }
+    }
+}
+
+.blob {
+    position: absolute;
+    background: radial-gradient(ellipse at top left, #b5f8fd, transparent),
+        radial-gradient(
+            closest-side,
+            #181c89 77%,
+            blue 82%,
+            green 87%,
+            yellow 90%,
+            red 93%,
+            black 100%
+        );
+    border-radius: 50%;
+
+    width: 25rem;
+    height: 25rem;
+    filter: blur(13px);
+
+    &.small {
+        width: 18rem;
+        height: 18rem;
+        filter: blur(9px);
+    }
+
+    &.blob-1 {
+        z-index: 1;
+        top: 9.5rem;
+        left: 9.5rem;
+    }
+
+    &.blob-2 {
+        z-index: 3;
+        animation: blobBop 18s ease-in-out infinite alternate-reverse;
+    }
+
+    &.blob-3 {
+        z-index: 2;
+        top: 20rem;
+        left: 6rem;
+        animation: blobSpin 18s linear infinite;
     }
 }

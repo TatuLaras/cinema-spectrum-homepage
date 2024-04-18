@@ -6,7 +6,6 @@
     border-radius: var(--border-radius);
     padding: var(--border-radius);
     background-color: var(--base-color);
-    // backdrop-filter: blur(1px);
     box-shadow: 0 0 5px var(--base-color);
     border-bottom-width: 0;
 
@@ -45,6 +44,16 @@
     margin: 2rem;
     margin-top: 20rem;
     align-self: stretch;
+    opacity: 0;
+    transform: translateX(-2rem);
+    transition:
+        opacity 0.3s ease-out,
+        transform 0.3s ease-out;
+
+    &.in-view {
+        opacity: 1;
+        transform: translateX(0);
+    }
 
     .content {
         display: flex;

@@ -1,38 +1,103 @@
 .download {
+    --line-color: hsl(0 0 60%);
     position: relative;
-    z-index: 5;
+    margin-top: 5rem;
+    height: 45rem;
     display: flex;
     justify-content: center;
+
+    &::before {
+        content: '';
+        display: block;
+        background-color: var(--line-color);
+        background: linear-gradient(90deg, var(--line-color) 30%, black 50%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+    }
+
+    .square {
+        width: 100px;
+        height: 100px;
+        border: 1px solid var(--line-color);
+        border-right-width: 0;
+        border-top-width: 0;
+    }
+
     .panel {
+        position: relative;
         max-width: 70rem;
         width: calc(100% - 2rem);
         padding-bottom: 4rem;
+        padding-left: 0;
+        border-radius: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: none;
 
-        .title {
-            padding-bottom: 3rem;
+        &::before {
+            content: '';
+            display: block;
+            background-color: var(--line-color);
+            background: linear-gradient(
+                180deg,
+                var(--line-color) 50%,
+                black 100%
+            );
+            position: absolute;
+            top: 0 !important;
+            bottom: 0 !important;
+            width: 1px;
+            left: 0 !important;
         }
+        .content {
+            &::before {
+                content: '';
+                display: block;
+                background: linear-gradient(
+                    90deg,
+                    var(--line-color) 30%,
+                    black 100%
+                );
+                top: 0;
+                height: 1px;
+                left: 0;
+                right: 0;
+            }
 
-        .platforms {
-            padding: 0 1rem;
-            gap: 1rem;
-            display: flex;
-            justify-content: space-around;
-            .platform {
-                width: 10rem;
-                cursor: pointer;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+            .title {
+                padding-bottom: 3rem;
+                padding-top: 1rem;
+            }
+
+            .platforms {
+                padding: 0 1rem;
                 gap: 1rem;
-                .name {
-                    display: none;
-                }
+                display: flex;
+                justify-content: space-around;
+                .platform {
+                    width: 10rem;
+                    cursor: pointer;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 1rem;
+                    .name {
+                        display: none;
+                    }
 
-                img {
-                    width: 100%;
-                    transition: filter 0.15s ease-out;
-                    &:hover {
-                        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
+                    img {
+                        width: 100%;
+                        transition: filter 0.15s ease-out;
+                        &:hover {
+                            filter: drop-shadow(
+                                0 0 5px rgba(255, 255, 255, 0.7)
+                            );
+                        }
                     }
                 }
             }

@@ -1,11 +1,3 @@
-import {
-    motion,
-    useMotionValue,
-    useScroll,
-    useSpring,
-    useTransform,
-} from 'framer-motion';
-import getVariants from '../variants';
 import SplitFeature from './SplitFeature';
 import UnknownFeature from './UnknownFeature';
 
@@ -15,57 +7,42 @@ import screenshot2 from '../../../assets/screenshots/screenshot2.png';
 import screenshotTvShowDesktop from '../../../assets/screenshots/screenshot-tvshow-desktop.png';
 import screenshotTvShowTv from '../../../assets/screenshots/screenshot-tvshow-tv.png';
 
-import { memo } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
+import { inView } from '../../../utils/inView';
 
 function Info() {
-    const { scrollY } = useScroll();
-    const progress = useSpring(scrollY, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001,
-    });
+    const [titleInView, setTitleInView] = useState(false);
+    const titleRef = useRef<HTMLHeadingElement | null>(null);
 
-    const h2Offset = useMotionValue(200);
-    const base = useMotionValue(2000);
-    const layer1 = useMotionValue(-0.9);
-    const layer2 = useMotionValue(-0.08);
-    const layer3 = useMotionValue(-0.01);
-    const h2Position = useTransform(
-        () => h2Offset.get() + (progress.get() - base.get()) * layer1.get(),
-    );
-    const blobPosition = useTransform(
-        () => (progress.get() - base.get()) * layer2.get(),
-    );
-    const bgPosition = useTransform(
-        () => (progress.get() - base.get()) * layer3.get(),
-    );
+
+    useEffect(() => {
+        window.addEventListener('scroll', onScroll);
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+        };
+    }, []);
+
+    function onScroll() {
+        setTitleInView(inView(titleRef.current!, 50, 'visible'));
+    }
 
     return (
-        <motion.div
-            className="info1"
-            variants={getVariants('info1')}
-            initial={{ opacity: 0 }}
-        >
+        <div className="info1">
             <div className="wrapper">
                 <div className="blob-container">
-                    <motion.div
-                        className="bottom-layer"
-                        style={{ y: bgPosition }}
-                    ></motion.div>
-                    <motion.div
-                        className="blob blob-4"
-                        initial={{ rotate: -45 }}
-                        style={{ y: blobPosition }}
-                        variants={getVariants('blob4')}
-                    ></motion.div>
+                    <div className="bottom-layer"></div>
+                    <div className="blob blob-4"></div>
                 </div>
             </div>
 
-            <motion.div className="content" style={{ y: h2Position }}>
-                <motion.h2 className="panel" variants={getVariants('h2')}>
+            <div className="content">
+                <h2
+                    className={`panel ${titleInView ? 'in-view' : ''}`}
+                    ref={titleRef}
+                >
                     The <span className="hl">Media Center</span> You've Been
                     Looking For
-                </motion.h2>
+                </h2>
                 <SplitFeature
                     title="Your local streaming service"
                     img1={screenshot2}
@@ -77,8 +54,8 @@ function Info() {
                     img2={screenshotTvShowTv}
                 />
                 <UnknownFeature />
-            </motion.div>
-        </motion.div>
+            </div>
+        </div>
     );
 }
 
