@@ -1,11 +1,6 @@
-import SplitFeature from './SplitFeature';
-import UnknownFeature from './UnknownFeature';
-
 import '../styles/info.scss';
 import screenshot1 from '../../../assets/screenshots/screenshot1.png';
 import screenshot2 from '../../../assets/screenshots/screenshot2.png';
-import screenshotTvShowDesktop from '../../../assets/screenshots/screenshot-tvshow-desktop.png';
-import screenshotTvShowTv from '../../../assets/screenshots/screenshot-tvshow-tv.png';
 
 import { memo, useEffect, useRef, useState } from 'react';
 import { inView } from '../../../utils/inView';
