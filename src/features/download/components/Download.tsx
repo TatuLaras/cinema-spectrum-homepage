@@ -11,11 +11,17 @@ function Download() {
                 <div className="content">
                     <div className="title">Download and install</div>
                     <div className="platforms">
-                        <a className="platform" href="#">
+                        <a
+                            className="platform"
+                            href="https://github.com/TatuLaras/cinema-spectrum"
+                        >
                             <img src={windowsIcon} alt="" />
                             <div className="name">Windows</div>
                         </a>
-                        <a className="platform" href="#">
+                        <a
+                            className="platform"
+                            href="https://github.com/TatuLaras/cinema-spectrum"
+                        >
                             <img src={linuxIcon} alt="" />
                             <div className="name">Linux</div>
                         </a>

@@ -9,11 +9,11 @@ import screenshotTvShowTv from '../../../assets/screenshots/screenshot-tvshow-tv
 
 import { memo, useEffect, useRef, useState } from 'react';
 import { inView } from '../../../utils/inView';
+import FeatureElement from '../../../components/FeatureElement';
 
 function Info() {
     const [titleInView, setTitleInView] = useState(false);
     const titleRef = useRef<HTMLHeadingElement | null>(null);
-
 
     useEffect(() => {
         window.addEventListener('scroll', onScroll);
@@ -43,17 +43,15 @@ function Info() {
                     The <span className="hl">Media Center</span> You've Been
                     Looking For
                 </h2>
-                <SplitFeature
-                    title="Your local streaming service"
-                    img1={screenshot2}
-                    img2={screenshot1}
-                />
-                <SplitFeature
-                    title="Works well on both the TV and as a desktop app"
-                    img1={screenshotTvShowDesktop}
-                    img2={screenshotTvShowTv}
-                />
-                <UnknownFeature />
+                <FeatureElement title="All of your movies in one place ...">
+                    <img src={screenshot1} alt="" />
+                </FeatureElement>
+                <FeatureElement
+                    title="... with all of your TV shows"
+                    className="split-feature"
+                >
+                    <img src={screenshot2} alt="" />
+                </FeatureElement>
             </div>
         </div>
     );
